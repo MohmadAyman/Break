@@ -1,0 +1,22 @@
+{
+  "name": "order",
+  "author": "MohmmadAyman",
+  "description": "Sails/Angular TODO Applcation",
+  "main": "app.js",
+  "dependencies": {
+    "cookie-parser": "^1.4.1",
+    "express": "^4.10.2",
+    "express-session": "^1.13.0",
+    "mongoose": "^4.4.12",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "ejs": "^2.4.1",
+    "gulp-inject": "^4.0.0",
+    "gulp-jscs": "^3.0.2",
+    "gulp-jshint": "^2.0.0",
+    "gulp-nodemon": "^2.0.6",
+    "jshint-stylish": "^2.1.0"
+  }
+}
