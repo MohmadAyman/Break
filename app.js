@@ -111,7 +111,7 @@ app.set('views','./src/views');
 
 app.set('view engine', 'ejs');
 
-app.use('/client',clientRouter);
+app.use('/Client',clientRouter);
 
 app.use('/',userRouter);
 

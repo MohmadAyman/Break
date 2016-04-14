@@ -6,6 +6,8 @@
 	<meta charset="utf-8"/>
 	<title>No titile</title>
 
+	<link href="http://fonts.googleapis.com/css?family=Cookie|Open+Sans:400,700" rel="stylesheet" />
+
 	<script src="/lib/angular/angular.min.js"></script>
 	<script src="/js/userOrder.js"></script>
 
@@ -15,7 +17,6 @@
 	<!-- endbower -->
 	<!-- bower:css -->
 	<link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
-	<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css" />
 	<!-- endbower -->
 	<!-- inject:js -->
 	<!-- endinject -->  
@@ -51,11 +52,12 @@
                         				{{service.name}} <span>{{service.price | currency}}</span>
                         			</li>
                         		</ul>
-                        	</div>
                         	<div class="total">
                         		<!-- Calculate the total price of all chosen services. Format it as currency. -->
                         		Total: <span>{{total() | currency}}</span>
                         	</div>
+                        	</div>
+
                         	<button type="submit" class="btn btn-primary btn-lg" ng-class="{active:service.active}" ng-click="placeOrder()">Order!</button>
                         </div>
                     </form>         

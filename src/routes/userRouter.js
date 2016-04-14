@@ -8,42 +8,35 @@ var path = require('path');
 
 var router = function(){
 
-    var menu = [
-    {
-        name: 'Burger',
-        price: 8,
-        active:false
-    },{
-        name: 'Cheese Burger',
-        price: 12,
-        active:false
-    },{
-        name: 'Double cheese burger',
-        price: 15,
-        active:false
-    },{
-        name: 'Pizza with Burger',
-        price: 20,
-        active:false
-    }
-    ];
-
     var orders = [{}];
-
+    var menu =[
+    {
+        name: 'pizza',
+        price: 15,
+        active: false
+    },    {
+        name: 'pizza',
+        price: 15,
+        active: false
+    },    {
+        name: 'pizza',
+        price: 15,
+        active: false
+    },    {
+        name: 'pizza',
+        price: 15,
+        active: false
+    },
+    ]
 
     userRouter.route('/')
     .get(function (req,res) {
         res.render('welcome',{title:'Welcome !!'});
     });
 
-    userRouter.route('/signup')
+    userRouter.route('/Signup')
     .get(function (req,res) {
         res.render('signup',{title: 'Sign Up !!!'});
-    });
-
-    userRouter.route('/signEdUp')
-    .get(function (req,res) {
-        res.render('welcome',{title: 'Welcome user'});
     });
 
     userRouter.route('/auth/signup')
@@ -51,9 +44,9 @@ var router = function(){
       console.log(req.body);
       var url = 'mongodb://localhost:27017/orderApp';
       mongodb.connect(url,function(err,db){
-        var collection = db.collection('userdb');
+        var collection = db.collection('userphone');
         var user = {
-            username: req.body.username,
+            username: req.body.phone,
             password: req.body.password,
             orders: orders 
         };
@@ -70,7 +63,7 @@ var router = function(){
     .post(passport.authenticate('local',{
         failureRedirect: '/'
     }), function (req,res) {
-        res.redirect('/menu')
+        res.redirect('/menu');
     });
 
     // userRouter.route('/orders')
@@ -86,19 +79,16 @@ var router = function(){
 
     userRouter.route('/menu')
     .all(function(req,res,next){
-        // if(!req.user){
-        //     res.redirect('/');
-        // }
+        if(!req.user){
+            res.redirect('/');
+        }
         next();
     })
-    // .get(function (req,res) {
-    //     res.json(menu); // return all todos in JSON format
-    // })
     .get(function(req, res) {
         res.sendFile(path.resolve( __dirname + '/../views/userOrder.html'));
     });
 
-    userRouter.route('/api/todos')
+    userRouter.route('/api/menu')
     .get(function (req,res) {
         res.json(menu);
         console.log(req.body);

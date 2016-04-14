@@ -8,27 +8,6 @@ var path = require('path');
 
 var router = function(){
 
-    var menu = [
-    {
-        name: 'Burger',
-        price: 8,
-        active:false
-    },{
-        name: 'Cheese Burger',
-        price: 12,
-        active:false
-    },{
-        name: 'Double cheese burger',
-        price: 15,
-        active:false
-    },{
-        name: 'Pizza with Burger',
-        price: 20,
-        active:false
-    }
-    ];
-
-
     clientRouter.route('/')
     .get(function (req,res) {
         res.render('signinClient',{title: 'Sign in to recive More orders!'});
@@ -71,8 +50,8 @@ var router = function(){
     clientRouter.route('/api/order/')
     .post(function (req,res) {
         console.log('client recived updated order list');
+        menu = req.body;
         res.redirect('/client/ordersUpdate');
-        // sendToInterface();
     });
 
     return clientRouter;

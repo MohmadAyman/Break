@@ -1,12 +1,10 @@
 var expressNode = angular.module('expressNode', []);
 
 function mainController($scope, $http, $rootScope) {
-  $scope.formData = {};
-  $scope.todos = [];
-
+  $scope.services = [];
   // when landing on the page, get all todos and show them
   $scope.initialize = function() {
-    $http.get('/api/todos')
+    $http.get('/api/menu')
     .success(function(data) {
       $scope.services = data;
     })
@@ -15,30 +13,13 @@ function mainController($scope, $http, $rootScope) {
     });
   };
 
-  // when submitting the add form, send the text to the node API
-  $scope.createTodo = function() {
-    $http.post('/api/todos', $scope.formData)
-    .success(function(data) {
-      $('input').val('');
-      $scope.todos = data;
-    })
-    .error(function(data) {
-      console.log('Error: ' + data);
-    });
-  };
-
-  // delete a todo after checking it
-  $scope.deleteTodo = function(id) {
-    $http.delete('/api/todos/' + id)
-    .success(function(data) {
-      $scope.todos = data;
-    })
-    .error(function(data) {
-      console.log('Error: ' + data);
-    });
-  };
-
-  $scope.services = [];
+  $http.get('/api/menu')
+  .success(function(data) {
+    $scope.services = data;
+  })
+  .error(function(data) {
+    console.log('Error: ' + data);
+  });
 
   $scope.toggleActive = function(s){
     s.active = !s.active;
@@ -64,12 +45,9 @@ function mainController($scope, $http, $rootScope) {
   }  
 
   $scope.total = function(){
-
     var total = 0;
-
     // Use the angular forEach helper method to
     // loop through the services array:
-
     angular.forEach($scope.services, function(s){
       if (s.active){
         total+= s.price;
