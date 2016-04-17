@@ -8,6 +8,7 @@ var path = require('path');
 
 var router = function(){
 
+    var username = {};
     var orders = [{}];
     var menu =[
     {
@@ -26,8 +27,8 @@ var router = function(){
         name: 'pizza',
         price: 15,
         active: false
-    },
-    ]
+    }
+    ];
 
     userRouter.route('/')
     .get(function (req,res) {
@@ -52,7 +53,7 @@ var router = function(){
         };
         collection.insert(user,function (err, results) {
             req.login(results,function () {
-                res.redirect('/signEdUp');
+                res.redirect('/menu');
             })
         })
         console.log('auth signin');
@@ -62,20 +63,11 @@ var router = function(){
     userRouter.route('/auth/signin')
     .post(passport.authenticate('local',{
         failureRedirect: '/'
-    }), function (req,res) {
+            }), function (req,res) {
+        console.log("in sign in ");
+        username = req.body;
         res.redirect('/menu');
     });
-
-    // userRouter.route('/orders')
-    // .all(function(req,res,next){
-    //     if(!req.user){
-    //         res.redirect('/');
-    //     }
-    //     next();
-    // })
-    // .get(function (req,res) {
-    //     res.json(req.user);
-    // })
 
     userRouter.route('/menu')
     .all(function(req,res,next){
@@ -91,9 +83,14 @@ var router = function(){
     userRouter.route('/api/menu')
     .get(function (req,res) {
         res.json(menu);
-        console.log(req.body);
     });
 
+    userRouter.route('/api/username')
+    .get(function (req,res) {
+        console.log('form userrouter ');
+        console.log(username);
+        res.json(username);
+    });
     return userRouter;
 }
 

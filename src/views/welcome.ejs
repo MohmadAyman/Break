@@ -16,6 +16,9 @@
   <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css" />
   <!-- endbower -->
   <!-- inject:js -->
+  <script src="/js/AddMenu.js"></script>
+  <script src="/js/clientOrder.js"></script>
+  <script src="/js/userOrder.js"></script>
   <!-- endinject -->  
   <!-- inject:css -->
   <link rel="stylesheet" href="/css/style.css">
@@ -31,29 +34,28 @@
     <!-- Declare a new AngularJS app and associate the controller -->
     <body ng-app ng-controller="reciveOrders">
 
-      <form name="signIpForm"  method="post" action="/auth/signin/">
-        <div class="jumbotron">
-          <h1 align="center">BREAK</h1>
-          <br>
-          <div id="todo-form" class="row">
-            <div class="col-sm-8 col-sm-offset-2 text-center">
-              <div class="form-group">
-                <input type="text" name="username" class="form-control input-md text-center" placeholder="Phone number">
-                <br>
-                <input type="password" name="password" class="form-control input-md text-center" placeholder="Password">
-                <br>
-                <button type="submit" class="btn btn-success btn-block" >Sign in!</button>
-              </div>
-              <a button type="submit" class="btn btn-link btn-sm"  href="/Client">Client?</button>
-              <a button type="submit" class="btn btn-link btn-sm" href="/Signup">Sign up!</button>
-
-                </div>
-              </div>
+      <form name="signInForm"  method="post" action="/auth/signin/">
+        <h1 align="center">Break!</h1>
+        <br>
+        <div id="todo-form" class="row">
+          <div class="col-sm-8 col-sm-offset-2 text-center">
+            <div class="form-group">
+              <input type="text" class="form-control input-md text-center" name="username" id="username" placeholder="User name">
+              <br>
+              <input type="password" class="form-control input-md text-center" name="password" id="password" placeholder="Password">
+              <br>
             </div>
-          </form>
+            <button type="submit" name="submit" class="btn btn-block btn-success">Sign in</button>
+            <br>
+        </div>
+
+            </div>
+          <a button type="button" class="btn btn-sm"  href="/Client">Client?</button></a>
+          <a button type="button" class="btn btn-sm" href="/Signup">Sign up!</button></a>
+      </form>
 
 
-          <!-- Include AngularJS from Google's CDN -->
-          <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
-        </body>
-        </html>
+      <!-- Include AngularJS from Google's CDN -->
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    </body>
+    </html>

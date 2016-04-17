@@ -32,26 +32,26 @@
     </head>
 
     <!-- Declare a new AngularJS app and associate the controller -->
-    <body ng-app ng-controller="reciveOrders">
-      <form  name="siunupformClient" method="post" action="/client/auth/signup/">
-        <h1 align="center">BREAK</h1>
-        <br>
-        <h4 align="center">Sign up!</h4>
-        <div id="todo-form" class="row">
-          <div class="col-sm-8 col-sm-offset-2 text-center">
-            <div class="form-group">
-             <input type="text" class="form-control input-md text-center" name="username" id="username" placeholder="Restaurant name">
-             <br>
-             <input type="password" class="form-control input-md text-center" name="password" id="password" placeholder="Password">
-             <br>
-             <button type="submit" class="btn btn-success btn-block" >Sign up!</button>
-           </div>
-         </div>
-                    <button type="submit" class="btn btn-link btn-sm" >User?</button>
-           <button type="submit" class="btn btn-link btn-sm" >Sign in!</button>
-       </div>
-     </form>
+    <body>
+      <form name="signUpForm" method="post" action="/Client/auth/signup/">
+        <div class="jumbotron">
+          <h1 align="center">BREAK</h1>
+          <br>
+          <h4 align="center">Sign up!!!</h4>
+          <div id="todo-form" class="row">
+            <div class="col-sm-8 col-sm-offset-2 text-center">
+              <input type="tel" id="clientName" name="clientName" class="form-control input-md text-center" placeholder="Resturant name">
+              <br>  
+              <input type="password" name="clientPassword" id="clientPassword" class="form-control input-md text-center" placeholder="Password">
+              <br>
+              <input type="tel" id="phone" name="phone" class="form-control input-md text-center" placeholder="Phone number">
+              <br>  
+              <a button type="submit" class="btn btn-link btn-lg"  href="/">Sign up</button>
+              </div>
+            </div>
+          </div>
+        </form>   
 
-     <!-- Include AngularJS from Google's CDN -->
-   </body>
-   </html>
+        <!-- Include AngularJS from Google's CDN -->
+      </body>
+      </html>

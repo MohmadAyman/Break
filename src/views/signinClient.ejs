@@ -16,10 +16,8 @@
   <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css" />
   <!-- endbower -->
   <!-- inject:js -->
-  <script src="/js/app.js"></script>
+  <script src="/js/AddMenu.js"></script>
   <script src="/js/clientOrder.js"></script>
-  <script src="/js/script.js"></script>
-  <script src="/js/scripts.js"></script>
   <script src="/js/userOrder.js"></script>
   <!-- endinject -->  
   <!-- inject:css -->
@@ -28,38 +26,33 @@
   <!-- endinject -->  
   <!-- The main CSS file -->
 
-		<!--[if lt IE 9]>
-			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-          <![endif]-->
-      </head>
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <![endif]-->
+    </head>
 
-      <!-- Declare a new AngularJS app and associate the controller -->
-      <body ng-app ng-controller="reciveOrders">
+    <!-- Declare a new AngularJS app and associate the controller -->
+    <body>
+      <form name="signInForm" method="post" action="/Client/auth/signin/">
+        <h1 align="center">Break</h1>
+        <h4 align="center">Sign in!</h4>
+        <br>
+        <div id="todo-form" class="row">
+          <div class="col-sm-8 col-sm-offset-2 text-center">
+            <input type="tel" id="username" name="username" class="form-control input-md text-center" placeholder="Resturant name">
+            <br>  
+            <input type="password" name="password" id="password" class="form-control input-md text-center" placeholder="Password">
+            <br>
+            <input type="password" name="id" id="id" class="form-control input-md text-center" placeholder="Unique ID">
+            <br>
+            <button type="submit" class="btn btn-sucess btn-block" >Sign in</button>
+          <a button type="submit" class="btn btn-block btn-md"  href="/Client/signup">Sign up</button></a>
 
-          <form>
-            <div class="jumbotron">
-                <h1 align="center">BREAK</h1>
-                <br>
-                <div id="todo-form" class="row">
-                    <div class="col-sm-8 col-sm-offset-2 text-center">
-                        <form>
-                            <div class="form-group">
-                                <input type="text" class="form-control input-md text-center" placeholder="Phone number">
-                                <br>
-                                <input type="password" class="form-control input-md text-center" placeholder="Password">
-                                <br>
-                                
-                                <button type="button" class="btn btn-success btn-block" >Sign in!</button>
-                                <button type="submit" class="btn btn-link btn-sm" >User?</button>
-                                <button type="submit" class="btn btn-link btn-sm" >Sign up!</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </form>
+          </div>
 
-        <!-- Include AngularJS from Google's CDN -->
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+        </div>
+      </form>   
+
+      <!-- Include AngularJS from Google's CDN -->
     </body>
     </html>

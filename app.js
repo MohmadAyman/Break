@@ -89,12 +89,9 @@ var restaurants = [
 ];
 var userRouter = require('./src/routes/userRouter.js')();
 var clientRouter = require('./src/routes/clientRouter.js')();
-var joinRouter = require('./src/routes/join.js');
-var orderRouter = require('./src/routes/order.js')();
+var adminRouter = require('./src/routes/adminRouter.js');
 
 var port = process.env.PORT | 5000;
-
-var orders = [{}];
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({
@@ -105,11 +102,14 @@ app.use(cookieParser());
 app.use(session({secret: 'secret',  
    saveUninitialized: true,
    resave: true}));
+
 require('./src/config/passport.js')(app);
 
 app.set('views','./src/views');
 
 app.set('view engine', 'ejs');
+
+// app.use('/Admin',adminRouter);
 
 app.use('/Client',clientRouter);
 

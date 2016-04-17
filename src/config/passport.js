@@ -11,6 +11,6 @@ module.exports = function (app) {
 	passport.deserializeUser(function(user,done) {
 		done(null, user);		// body...
 	});
-
 	require('./strategies/local.strategy.js')();
+
 };

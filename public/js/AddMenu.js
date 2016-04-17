@@ -1,48 +1,35 @@
 var expressNode = angular.module('expressNode', []);
 
-function mainController($scope, $http, $rootScope,$timeout) {
+function mainController($scope, $http, $rootScope) {
   $scope.services = [];
-  var Orders = [];
-  var userOrder = [];
-  var numberOrderStatic = 0;
+
   // when landing on the page, get all orders and show them.
   $scope.initialize = function() {
     $http.get('/client/ordersUpdate')
     .success(function(data) {
-      console.log(data);
-      menuToOrderes(data[1]);
+      console.log('client interface recived');
+      menuToOrderes(data);
     })
     .error(function(data) {
       console.log('Error: ' + data);
     });
   };
 
-var upView = function () {
-  console.log('up view');
-  $scope.services = $scope.services;
-};
-
-$scope.Refresh= function(){
 // when an order comes, diplay it instantly.
 $http.get('/client/ordersUpdate')
 .success(function(data) {
-  console.log('client interface 2 recived');
-  $timeout(upView,2000,true);
+  console.log('client interface recived');
   menuToOrderes(data);
 })
 .error(function(data) {
   console.log('Error: ' + data);
 });
-}
-
-setInterval($scope.Refresh, 2000);
 
 // Weired bug, had to do two loops.
 // TODO
 // Add the orders to the collection.
 var menuToOrderes = function (data) {
-     $scope.services = data;
-
+ $scope.services = data;
  angular.forEach($scope.services, function(s){
   if (s.active){
   }
@@ -58,7 +45,6 @@ var menuToOrderes = function (data) {
   }
 });
 }
-
 
 $scope.total = function(){
   var total = 0;
@@ -75,7 +61,7 @@ $scope.total = function(){
 // TODO 
 // remove the order from the collection.
 $scope.removeOrder = function(s) {
-  $scope.services.splice($scope.services.indexOf(s), 1);
+  $scope.services.splice($scope.services.indexOf(s), 1)
 }
 
 }

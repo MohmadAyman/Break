@@ -15,18 +15,21 @@ module.exports = function () {
 		var url = 'mongodb://localhost:27017/orderApp';
 		mongodb.connect(url,function(err,db){
 			var collection = db.collection('userphone');
+			console.log('matched number is : ');
+			var x = parseInt(collection.find({username: username}).count());
+			console.log(x);
+			if (x===8){
+				console.log('Right !!');
+				done(null, false);
+			}
 			collection.findOne({username: username},function(err,results,mess){
 				console.log(results);
-				if(!results)
-				{
-					done(null, false, {message: 'User does not exist'});
-				}
-				if(results.password === password){
-					var user = results;
-					done(null, user,{message: 'ok'});					
-				}else{
-					done(null, false, {message: 'wrong'});
-				}
+				if (err) { done(err); }
+				if (results === 'null') { done(null, false); }
+				if(!results.username) { done(null, false); }
+				if (!results.username === username) { done(null, false); }				
+				if (!results.password === password) { done(null, false); }
+				done(null, results);
 			}
 			);
 		})

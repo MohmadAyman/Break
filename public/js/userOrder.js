@@ -2,6 +2,8 @@ var expressNode = angular.module('expressNode', []);
 
 function mainController($scope, $http, $rootScope) {
   $scope.services = [];
+  $scope.username = {};
+  var toBeSent = [$scope.username, $scope.services];
   // when landing on the page, get all todos and show them
   $scope.initialize = function() {
     $http.get('/api/menu')
@@ -10,6 +12,15 @@ function mainController($scope, $http, $rootScope) {
     })
     .error(function(data) {
       console.log('Error: ' + data);
+    });
+    $http.get('/api/username')
+    .success(function(name) {
+      toBeSent = [$scope.username, $scope.services];
+      $scope.username = name.username;
+      console.log(name.username);
+    })
+    .error(function(data) {
+      console.log('Error: ' + name.username);
     });
   };
 
@@ -26,6 +37,7 @@ function mainController($scope, $http, $rootScope) {
   };
 
   $scope.placeOrder = function() {
+    toBeSent = [$scope.username, $scope.services];
     var orderList = [{
       name: ''
     }];
@@ -35,8 +47,9 @@ function mainController($scope, $http, $rootScope) {
       }
     })
 
-    $http.post('/client/api/order', $scope.services)
+    $http.post('/client/api/order', toBeSent)
     .success(function(data) {
+      console.log(toBeSent);
       console.log('no rerror')
     })
     .error(function(data) {
