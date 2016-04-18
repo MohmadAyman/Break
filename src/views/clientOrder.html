@@ -43,10 +43,13 @@
 
                         <!-- Loop through the services array, assign a click handler, and set or
                         remove the "active" css class if needed -->
+
+
                         <div class="form-group">
                         	<div class="row">
+				
                         		<ul>
-                        			<li ng-repeat="service in services" class="form-control input-lg"  ng-class="{active:service.active}" ng-click="removeOrder(service)">
+                        			<li  ng-repeat="service in services" class="form-control input-lg"  ng-class="{active:service.active}" ng-click="removeOrder(service)">
                         				<!-- Notice the use of the currency filter, it will format the price -->
                         				{{service.name}} <span>{{service.price | currency}}</span>
                         			</li>
@@ -55,7 +58,7 @@
                         	<div class="total">
                         		<!-- Calculate the total price of all chosen services. Format it as currency. -->
                         		Total: <span>{{total() | currency}}</span>
-                        	<button type="submit" class="btn btn-primary btn-lg" ng-class="{active:service.active}" ng-click="placeOrder()">Order!</button>
+                        	<button type="submit" class="form-control input-lg" ng-class="{active:service.active}" ng-click="placeOrder()">Order!</button>
                         </div>
                     </form>         
                 </div>

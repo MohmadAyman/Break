@@ -36,8 +36,8 @@ var router = function(){
     }];
 
     var orders = [];
-     var name = {};
-     var menu = [pizza,sandwitches,sori];
+    var name = {};
+    var menu = [pizza,sandwitches,sori];
     
     clientRouter.route('/')
     .get(function (req,res) {
@@ -106,8 +106,10 @@ clientRouter.route('/orders')
     res.sendFile(path.resolve( __dirname + '/../views/clientOrder.html'));
 });
 
+// TODO the time intervaal at the angular part calls the get for this url regurarly,
+// whic eventially overrides the client interface
 clientRouter.route('/ordersUpdate')
-.get(function (req,res) {
+.post(function (req,res) {
     for (var i = 0; i < menu.length; i++) {
         if (menu[i].active) {
         }

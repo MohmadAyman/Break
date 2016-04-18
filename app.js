@@ -5,6 +5,14 @@ var cookieParser = require('cookie-parser');
 var passport = require('passport');
 var session = require('express-session');
 var router = express.Router();
+var socket_io    = require( "socket.io" );
+var io           = socket_io();
+app.io           = io;
+
+io.on( "connection", function( socket )
+{
+    console.log( "A user has connected !!!!!!!!!!!!!!!!!!!!!!!!" );
+});
 
 var items = [
 {

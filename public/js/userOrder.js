@@ -24,6 +24,12 @@ function mainController($scope, $http, $rootScope) {
     });
   };
 
+  var socket = io('http://localhost:5082');
+    // socket.on('connect',function(){
+    //       console.log('Socket connected');
+    //       socket.emit('client_data', { Horas: 'data' });   
+    // });
+
   $http.get('/api/menu')
   .success(function(data) {
     $scope.services = data;
