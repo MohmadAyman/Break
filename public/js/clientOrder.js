@@ -1,65 +1,73 @@
-var expressNode = angular.module('expressNode', []);
+  var expressNode = angular.module('expressNode', []);
 
-function mainController($scope, $http, $rootScope,$timeout) {
-  $scope.services = [];
-  $scope.Orders = [];
-  var userOrder = [];
-  var names = [];
-  var numberOrderStatic = 1;
+  function mainController($scope, $http, $rootScope,$timeout) {
+    $scope.services = [];
+    var recivedOrder = [];
+    $scope.Orders = [];
+    var usersOrders = [];
+    var names = [];
+    var numberOrderStatic = 1;
   // when landing on the page, get all orders and show them.
   $scope.initialize = function() {
-    $http.post('/client/ordersUpdate')
-    .success(function(data) {
-      console.log(data);
-      $scope.Orders[numberOrderStatic] = $scope.Orders[numberOrderStatic];
-    })
-    .error(function(data) {
-      console.log('Error: ' + data);
-    });
+    // $http.post('/client/ordersUpdate')
+    // .success(function(data) {
+    //   console.log(data);
+    //   $scope.Orders[numberOrderStatic] = $scope.Orders[numberOrderStatic];
+    // })
+    // .error(function(data) {
+    //   console.log('Error: ' + data);
+    // });
   };
 
   var upView = function () {
+    console.log('up');
+    $scope.$apply();
     $scope.services = $scope.services;
   };
 
-  $scope.Refresh= function(){
-// when an order comes, diplay it instantly.
-$http.post('/client/ordersUpdate')
-.success(function(data) {
-  // for (var i = 0; i < names.length; i++) {
-  //   console.log(data[0]);
-  //   console.log(names[i]);
-  //   if (data[0] == names[i])
-  //   {
-  //   }
-  //   else{
-  //     console.log('Number until now');
-  //     console.log(numberOrderStatic);
-  //     numberOrderStatic = numberOrderStatic +1;
-  //     $scope.Orders[numberOrderStatic] = data[1];
-  //     names [numberOrderStatic] = data[0];
-  //     $timeout(upView,2000,true);
-  //     menuToOrderes(data[1]);  
-  //   }
-  // }
-    $scope.Orders[numberOrderStatic] = data[1];
-    names [numberOrderStatic] = data[0];
-    $timeout(upView,2000,true);
+  socket.on('reciveOrder', function (data) {
     menuToOrderes(data[1]);  
-})
-.error(function(data) {
-  console.log('Error: ' + data);
-});
-}
+    console.log('recived  order');
+    upView();
+  });
 
-setInterval($scope.Refresh, 2000);
+//   $scope.Refresh= function(){
+// // when an order comes, diplay it instantly.
+// $http.post('/client/ordersUpdate')
+// .success(function(data) {
+//   // for (var i = 0; i < names.length; i++) {
+//   //   console.log(data[0]);
+//   //   console.log(names[i]);
+//   //   if (data[0] == names[i])
+//   //   {
+//   //   }
+//   //   else{
+//   //     console.log('Number until now');
+//   //     console.log(numberOrderStatic);
+//   //     numberOrderStatic = numberOrderStatic +1;
+//   //     $scope.Orders[numberOrderStatic] = data[1];
+//   //     names [numberOrderStatic] = data[0];
+//   //     $timeout(upView,2000,true);
+//   //     menuToOrderes(data[1]);  
+//   //   }
+//   // }
+//   $scope.Orders[numberOrderStatic] = data[1];
+//   names [numberOrderStatic] = data[0];
+//   $timeout(upView,2000,true);
+//   menuToOrderes(data[1]);  
+// })
+// .error(function(data) {
+//   console.log('Error: ' + data);
+// });
+// }
+
+// setInterval($scope.Refresh, 2000);
 
 // Weired bug, had to do two loops.
 // TODO
 // Add the orders to the collection.
 var menuToOrderes = function (data) {
  $scope.services = data;
-
  angular.forEach($scope.services, function(s){
   if (s.active){
   }
@@ -74,6 +82,9 @@ var menuToOrderes = function (data) {
     $scope.removeOrder(s);
   }
 });
+  usersOrders.push($scope.services);
+  console.log($scope.services);
+  console.log(usersOrders);
 }
 
 

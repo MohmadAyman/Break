@@ -24,7 +24,7 @@ function mainController($scope, $http, $rootScope) {
     });
   };
 
-  var socket = io('http://localhost:5082');
+  // var socket = io('http://localhost:5082');
     // socket.on('connect',function(){
     //       console.log('Socket connected');
     //       socket.emit('client_data', { Horas: 'data' });   
@@ -55,7 +55,6 @@ function mainController($scope, $http, $rootScope) {
 
     $http.post('/client/api/order', toBeSent)
     .success(function(data) {
-      console.log(toBeSent);
       console.log('no rerror')
     })
     .error(function(data) {

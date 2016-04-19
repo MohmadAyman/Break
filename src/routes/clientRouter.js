@@ -6,7 +6,13 @@ var objectId = require('mongodb').ObjectID;
 var passport = require('passport');
 var path = require('path');
 
-var router = function(){
+var router = function(io){
+
+
+    io.on('connection', function(socket){
+      socket.on('event', function(data){});
+      socket.on('disconnect', function(){});
+  });
 
     var pizza = [{
         name: 'Margretta',
@@ -117,7 +123,8 @@ clientRouter.route('/ordersUpdate')
     }
     var toBeSent = [ name, menu];
     console.log(toBeSent);
-    res.json(toBeSent);
+//    res.json(toBeSent);
+       io.emit('reciveOrder',toBeSent); 
         // If i was to save the i orders in the db, should be done here
         console.log('client sent to interface');
     });        
@@ -131,7 +138,16 @@ clientRouter.route('/api/order/')
     console.log('client recived ROUTER!!');
     name = req.body[0];
     menu = req.body[1];
-    res.redirect('/client/ordersUpdate');
+    // res.redirect('/client/ordersUpdate');
+    for (var i = 0; i < menu.length; i++) {
+        if (menu[i].active) {
+        }
+        menu[i]
+    }
+    var toBeSent = [ name, menu];
+    console.log(toBeSent);
+//    res.json(toBeSent);
+       io.emit('reciveOrder',toBeSent); 
 });
 
 return clientRouter;

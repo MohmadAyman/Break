@@ -1,18 +1,13 @@
 var express = require('express');
-var app = express();
+var app = require('express')();
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
+
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var passport = require('passport');
 var session = require('express-session');
 var router = express.Router();
-var socket_io    = require( "socket.io" );
-var io           = socket_io();
-app.io           = io;
-
-io.on( "connection", function( socket )
-{
-    console.log( "A user has connected !!!!!!!!!!!!!!!!!!!!!!!!" );
-});
 
 var items = [
 {
@@ -96,7 +91,7 @@ var restaurants = [
 }
 ];
 var userRouter = require('./src/routes/userRouter.js')();
-var clientRouter = require('./src/routes/clientRouter.js')();
+var clientRouter = require('./src/routes/clientRouter.js')(io);
 var adminRouter = require('./src/routes/adminRouter.js');
 
 var port = process.env.PORT | 5000;
@@ -123,6 +118,6 @@ app.use('/Client',clientRouter);
 
 app.use('/',userRouter);
 
-app.listen(port,function(err){
+server.listen(port,function(err){
     console.log('running on server at port '+ port);
 })
