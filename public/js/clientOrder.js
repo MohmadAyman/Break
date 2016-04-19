@@ -4,7 +4,7 @@
     $scope.services = [];
     var recivedOrder = [];
     $scope.Orders = [];
-    var usersOrders = [];
+    $scope.usersOrders = [];
     var names = [];
     var numberOrderStatic = 1;
   // when landing on the page, get all orders and show them.
@@ -82,7 +82,7 @@ var menuToOrderes = function (data) {
     $scope.removeOrder(s);
   }
 });
-  usersOrders.push($scope.services);
+  $scope.usersOrders.push($scope.services);
   console.log($scope.services);
   console.log(usersOrders);
 }
