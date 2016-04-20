@@ -6,25 +6,25 @@
 	<meta charset="utf-8"/>
 	<title>No titile</title>
 
-	<link href="http://fonts.googleapis.com/css?family=Cookie|Open+Sans:1000,1000" rel="stylesheet" />
+<!-- 	<link href="http://fonts.googleapis.com/css?family=Cookie|Open+Sans:1000,1000" rel="stylesheet" />
+-->
+<script src="/lib/angular/angular.min.js"></script>
+<script src="/js/clientOrder.js"></script>
 
-	<script src="/lib/angular/angular.min.js"></script>
-	<script src="/js/clientOrder.js"></script>
-
-	<!-- bower:js -->
-	<script src="/lib/jquery/dist/jquery.js"></script>
-	<script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
-	<!-- endbower -->
-	<!-- bower:css -->
-	<link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
-	<!-- endbower -->
-	<!-- inject:js -->
-	<!-- endinject -->  
-	<!-- inject:css -->
-	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/css/styles.css">
-	<!-- endinject -->  
-	<!-- The main CSS file -->
+<!-- bower:js -->
+<script src="/lib/jquery/dist/jquery.js"></script>
+<script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+<!-- endbower -->
+<!-- bower:css -->
+<link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+<!-- endbower -->
+<!-- inject:js -->
+<!-- endinject -->  
+<!-- inject:css -->
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/styles.css">
+<!-- endinject -->  
+<!-- The main CSS file -->
 
 		<!--[if lt IE 9]>
 			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -51,31 +51,23 @@
                         		
                         		<div ng-repeat="order in usersOrders">
                         			<ul>
-                        			{{order[0]}}
-                        				<li ng-repeat="service in order[1]"  class="form-control input-lg"  ng-class="{active:service.active}" ng-click="removeOrder(service)">
-                        				{{name}}
+                        				<li ng-click="removeOrder(order[0])">
+                        					{{order[0]}}
+                        				</li>
+                        				<li ng-repeat="service in order[1]"  class="form-control input-lg"  ng-class="{active:service.active}">
                         					<!-- Notice the use of the currency filter, it will format the price -->
-                        					{{service.name}} <span>{{service.price | currency}}</span>
+                        					{{service.name}} <span>{{service.price}} LE</span>
                         				</li>
                         			</ul>
                         		</div>
 
                         	</div>
-                        	<div class="total">
-                        		<!-- Calculate the total price of all chosen services. Format it as currency. -->
-                        		Total: <span>{{total() | currency}}</span>
-                        		<button type="submit" class="form-control input-lg" ng-class="{active:service.active}" ng-click="placeOrder()">Order!</button>
-                        	</div>
                         </form>         
                     </div>
-
                 </div>
-                <script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
-
+                <script src="/socket.io/socket.io.js"></script>
                 <script>
                 	var socket = io('http://localhost:5082');
                 </script>
-
-
             </body>
             </html>
