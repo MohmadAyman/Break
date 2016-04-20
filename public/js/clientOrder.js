@@ -26,7 +26,7 @@
   };
 
   socket.on('reciveOrder', function (data) {
-    menuToOrderes(data[1]); 
+    menuToOrderes(data); 
     $scope.names.push(data[0]);
     console.log('recived  order');
     upView();
@@ -68,7 +68,7 @@
 // TODO
 // Add the orders to the collection.
 var menuToOrderes = function (data) {
- $scope.services = data;
+ $scope.services = data[1];
  angular.forEach($scope.services, function(s){
   if (s.active){
   }
@@ -83,7 +83,7 @@ var menuToOrderes = function (data) {
     $scope.removeOrder(s);
   }
 });
-  $scope.usersOrders.push($scope.services);
+  $scope.usersOrders.push(data);
   console.log($scope.services);
   console.log($scope.usersOrders);
 }
