@@ -5,7 +5,7 @@
     var recivedOrder = [];
     $scope.Orders = [];
     $scope.usersOrders = [];
-    var names = [];
+    $scope.names = [];
     var numberOrderStatic = 1;
   // when landing on the page, get all orders and show them.
   $scope.initialize = function() {
@@ -26,7 +26,8 @@
   };
 
   socket.on('reciveOrder', function (data) {
-    menuToOrderes(data[1]);  
+    menuToOrderes(data[1]); 
+    $scope.names.push(data[0]);
     console.log('recived  order');
     upView();
   });
@@ -84,7 +85,7 @@ var menuToOrderes = function (data) {
 });
   $scope.usersOrders.push($scope.services);
   console.log($scope.services);
-  console.log(usersOrders);
+  console.log($scope.usersOrders);
 }
 
 
