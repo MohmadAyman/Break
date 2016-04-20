@@ -4,4 +4,5 @@
 // Send the order only once.
 // When aan order is sent while the client isn't online (has his interface opened), he wont recive the order
 // even when he opens his after it and refreshes.
-var issues = 3;
+// @user, send a notification to the user when the server restarts to re-order.
+// @Client, removeOrder is to be fixed
