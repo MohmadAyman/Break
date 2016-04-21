@@ -7,8 +7,6 @@ var passport = require('passport');
 var path = require('path');
 
 var router = function(io){
-
-
     io.on('connection', function(socket){
       socket.on('event', function(data){});
       socket.on('disconnect', function(){});

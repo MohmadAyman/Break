@@ -51,10 +51,10 @@
                         		
                         		<div ng-repeat="order in usersOrders">
                         			<ul>
-                        				<li ng-click="removeOrder(order[0])">
+                        				<li ng-click="userDone(order)">
                         					{{order[0]}}
                         				</li>
-                        				<li ng-repeat="service in order[1]"  class="form-control input-lg"  ng-class="{active:service.active}">
+                        				<li ng-repeat="service in order[1]"  class="form-control input-lg"  ng-class="{active:service.active}" ng-click="removeOrder(service)">
                         					<!-- Notice the use of the currency filter, it will format the price -->
                         					{{service.name}} <span>{{service.price}} LE</span>
                         				</li>

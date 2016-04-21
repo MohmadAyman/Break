@@ -24,21 +24,6 @@
     upView();
   });
 
-//   // for (var i = 0; i < names.length; i++) {
-//   //   console.log(data[0]);
-//   //   console.log(names[i]);
-//   //   if (data[0] == names[i])
-//   //   {
-//   //   }
-//   //   else{
-//   //     console.log('Number until now');
-//   //     console.log(numberOrderStatic);
-//   //     numberOrderStatic = numberOrderStatic +1;
-//   //     $scope.Orders[numberOrderStatic] = data[1];
-//   //     names [numberOrderStatic] = data[0];
-//   //     $timeout(upView,2000,true);
-//   //     menuToOrderes(data[1]);  
-
 // setInterval($scope.Refresh, 2000);
 
 // Weired bug, had to do two loops.
@@ -66,8 +51,14 @@ var menuToOrderes = function (data) {
 // TODO 
 // remove the order from the collection.
 $scope.removeOrder = function(s) {
-  console.log($scope.services.indexOf(s));
   $scope.services.splice($scope.services.indexOf(s), 1);
+}
+
+// TODO 
+// remove the order from the collection.
+$scope.userDone = function(s) {
+  console.log('Orders for this user: ' + s[1].length + 'at postion: ' + $scope.usersOrders.indexOf(s));
+  $scope.usersOrders.splice($scope.usersOrders.indexOf(s), s[1].length);
 }
 
 }

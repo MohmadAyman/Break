@@ -7,3 +7,4 @@
 // @user, send a notification to the user when the server restarts to re-order.
 // @Client, removeOrder is to be fixed
 // Store the user's order in the db, store the [date, username, items orderes
+// WTF is splice doing??
