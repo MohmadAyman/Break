@@ -4,6 +4,9 @@
   "description": "Sails/Angular TODO Applcation",
   "npm start" : "node app.js", 
  "main": "app.js",
+  "engines": {
+    "node": "5.10.1"
+  },
   "dependencies": {
     "cookie-parser": "^1.4.1",
     "express": "^4.10.2",
