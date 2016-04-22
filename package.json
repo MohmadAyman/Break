@@ -2,8 +2,10 @@
   "name": "order",
   "author": "MohmmadAyman",
   "description": "Sails/Angular TODO Applcation",
-  "npm start" : "node app.js", 
- "main": "app.js",
+  "scripts": {
+  "start": "node app.js"
+},
+  "main": "app.js",
   "engines": {
     "node": "5.10.1"
   },
