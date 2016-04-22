@@ -44,15 +44,15 @@ section, footer, header, aside, nav{
 --------------------------*/
 
 
-/*form{
-	background-color: #61a1bc;
+form{
+	background-color: #fff;
 	border-radius: 2px;
 	box-shadow: 0 1px 1px #ccc;
-	width: 400px;
+	/*	width: 500px;*/
 	padding: 35px 60px;
-	margin: 80px auto;
+	margin: 10px auto;
 }
-*/
+
 form h1{
 	color:#897;
 	font-size:64px;
@@ -73,7 +73,7 @@ form ul{
 
 form ul li{
 	padding:20px 30px;
-	background-color:#e35885;
+	background-color:#ef5885;
 	margin-bottom:8px;
 	box-shadow:0 1px 1px rgba(0,0,0,0.1);
 	cursor:pointer;
@@ -88,12 +88,12 @@ form ul li.active{
 }
 
 div.total{
-	border-top:1px solid rgba(255,255,255,0.5);
+	border-top:1px solid rgba(0,0,0,0.5);
 	padding:15px 30px;
 	font-size:20px;
 	font-weight:bold;
 	text-align: left;
-	color:#fff;
+	color:#000;
 }
 
 div.total span{

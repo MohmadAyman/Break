@@ -11,6 +11,7 @@
   // TODO when landing on the page, get all orders that have not been served and display them.
   $scope.initialize = function() {
   };
+function pad(n) { return n < 10 ? '0' + n : n };
 
   var upView = function () {
     $scope.$apply();
@@ -45,6 +46,11 @@ var menuToOrderes = function (data) {
     $scope.removeOrder(s);
   }
 });
+ // TODO, add have been waiting for feild.
+    d = new Date();
+    s = pad(d.getHours()) + ":"
+    + pad(d.getMinutes()) + "\n";
+    data[0] = data[0] + " ----- " + "Ordered @ " + s;
   $scope.usersOrders.push(data);
 }
 

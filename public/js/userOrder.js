@@ -30,40 +30,40 @@ function mainController($scope, $http, $rootScope) {
     //       socket.emit('client_data', { Horas: 'data' });   
     // });
 
-  $http.get('/api/menu')
-  .success(function(data) {
-    $scope.services = data;
-  })
-  .error(function(data) {
-    console.log('Error: ' + data);
-  });
-
-  $scope.toggleActive = function(s){
-    s.active = !s.active;
-  };
-
-  $scope.placeOrder = function() {
-    toBeSent = [$scope.username, $scope.services];
-    var orderList = [{
-      name: ''
-    }];
-    angular.forEach($scope.services, function(s){
-      if (s.active){
-        orderList[0].name += s.name;
-      }
-    })
-
-    $http.post('/client/api/order', toBeSent)
+    $http.get('/api/menu')
     .success(function(data) {
-      console.log('no rerror')
+      $scope.services = data;
     })
     .error(function(data) {
       console.log('Error: ' + data);
     });
-  }  
 
-  $scope.total = function(){
-    var total = 0;
+    $scope.toggleActive = function(s){
+      s.active = !s.active;
+    };
+
+    $scope.placeOrder = function() {
+      toBeSent = [$scope.username, $scope.services];
+      var orderList = [{
+        name: ''
+      }];
+      angular.forEach($scope.services, function(s){
+        if (s.active){
+          orderList[0].name += s.name;
+        }
+      })
+
+      $http.post('/client/api/order', toBeSent)
+      .success(function(data) {
+        console.log('no rerror')
+      })
+      .error(function(data) {
+        console.log('Error: ' + data);
+      });
+    }  
+
+    $scope.total = function(){
+      var total = 0;
     // Use the angular forEach helper method to
     // loop through the services array:
     angular.forEach($scope.services, function(s){
@@ -74,4 +74,16 @@ function mainController($scope, $http, $rootScope) {
     return total;
   };
 
+  // TODO add search functionality
+  $scope.searchMenu = function (string) {
+  console.log('recived name ' + string);
+    angular.forEach($scope.services, function(s){
+     angular.forEach(s, function(item){
+      if (item.name == string){
+        console.log('recived item of a name ' + string);
+        item.active = true;
+      }
+    });
+   });  
+  }
 }

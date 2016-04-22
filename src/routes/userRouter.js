@@ -7,28 +7,51 @@ var passport = require('passport');
 var path = require('path');
 
 var router = function(){
-
     var username = {};
     var orders = [{}];
-    var menu =[
+
+    var pizza = [{
+        name: 'Margretta',
+        price: 12,
+        active: false
+
+    },
     {
-        name: 'pizza',
-        price: 15,
+        name: 'Cheese',
+        price: 16,
         active: false
-    },    {
-        name: 'pizza',
-        price: 15,
+
+    }];
+
+    var sandwitches = [{
+        name: 'Batates',
+        price: 10,
         active: false
-    },    {
-        name: 'pizza',
-        price: 15,
+
+    },
+    {
+        name: 'Shwrma',
+        price: 7,        
         active: false
-    },    {
-        name: 'pizza',
-        price: 15,
+
+    }];
+    
+    var sori = [{
+        name: 'Kofta',
+        price: 10,
         active: false
-    }
-    ];
+
+    },
+    {
+        name: 'Tates',
+        price: 6,
+        active: false
+
+    }];
+
+    // var menu =[pizza,sandwitches,sori];
+
+    var menu = pizza;
 
     userRouter.route('/')
     .get(function (req,res) {
@@ -47,13 +70,13 @@ var router = function(){
       mongodb.connect(url,function(err,db){
         var collection = db.collection('userphone');
         var user = {
-            username: req.body.phone,
+            username: req.body.username,
             password: req.body.password,
             orders: orders 
         };
         collection.insert(user,function (err, results) {
             req.login(results,function () {
-                res.redirect('/menu');
+                res.redirect('/');
             })
         })
         console.log('auth signin');
@@ -63,7 +86,7 @@ var router = function(){
     userRouter.route('/auth/signin')
     .post(passport.authenticate('local',{
         failureRedirect: '/'
-            }), function (req,res) {
+    }), function (req,res) {
         console.log("in sign in ");
         username = req.body;
         res.redirect('/menu');

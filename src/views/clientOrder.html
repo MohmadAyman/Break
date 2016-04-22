@@ -29,26 +29,18 @@
 		<!--[if lt IE 9]>
 			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 			<![endif]-->
-
 		</head>
 		<!-- SET THE CONTROLLER AND GET ALL TODOS WITH INITIALIZE FUNCTION -->
 		<body ng-controller="mainController" ng-init="initialize()">
 			<div class="container">
-
 				<!-- HEADER AND TODO COUNT -->
-
 				<form>
 					<h1 align="center">BREAK</h1>
 					<h4 align="center">Orders</h4>		
-
                         <!-- Loop through the services array, assign a click handler, and set or
                         remove the "active" css class if needed -->
-
-
                         <div class="form-group">
                         	<div class="row">
-
-                        		
                         		<div ng-repeat="order in usersOrders">
                         			<ul>
                         				<li ng-click="userDone(order)">
@@ -60,7 +52,6 @@
                         				</li>
                         			</ul>
                         		</div>
-
                         	</div>
                         </form>         
                     </div>
