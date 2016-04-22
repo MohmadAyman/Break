@@ -10,7 +10,7 @@ var router = function(){
     .get(function (req,res) {
         var id = new objectId(req.params.id);
         console.log(id);
-        var url = 'mongodb://localhost:27017/orderApp';
+        var url = 'mongodb://$OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT/';
         mongodb.connect(url,function(err,db){
          var collection = db.collection('restaurants');
          collection.findOne({_id: id}),
@@ -27,7 +27,7 @@ var router = function(){
 
     orderRouter.route('/')
     .get(function (req,res) {
-        var url = 'mongodb://localhost:27017/orderApp';
+        var url = 'mongodb://$OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT/';
         mongodb.connect(url,function(err,db){
          var collection = db.collection('restaurants');
          collection.find({}).toArray(

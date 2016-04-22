@@ -12,7 +12,7 @@ module.exports = function () {
 		password: 'password'
 	},
 	function(username,password,done){
-		var url = 'mongodb://localhost:27017/orderApp';
+		var url = 'mongodb://$OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT/';
 		mongodb.connect(url,function(err,db){
 			var collection = db.collection('userphone');
 			console.log('matched number is : ');

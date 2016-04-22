@@ -3,9 +3,9 @@
   "author": "MohmmadAyman",
   "description": "Sails/Angular TODO Applcation",
   "scripts": {
-  "start": "node app.js"
+  "start": "node server.js"
 },
-  "main": "app.js",
+  "main": "server.js",
   "engines": {
     "node": "5.10.1"
   },
