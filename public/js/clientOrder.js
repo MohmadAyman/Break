@@ -25,8 +25,6 @@ function pad(n) { return n < 10 ? '0' + n : n };
     upView();
   });
 
-// setInterval($scope.Refresh, 2000);
-
 // Weired bug, had to do two loops.
 // TODO
 // Add the orders to the collection.
