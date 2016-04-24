@@ -5,6 +5,7 @@ var userRouter = express.Router();
 var objectId = require('mongodb').ObjectID;
 var passport = require('passport');
 var path = require('path');
+var userModel =  require('../../public/models/model_user.js');
 
 var router = function(){
     var username = {};
@@ -20,7 +21,6 @@ var router = function(){
         name: 'Cheese',
         price: 16,
         active: false
-
     }];
 
     var sandwitches = [{

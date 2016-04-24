@@ -5,6 +5,8 @@ var clientRouter = express.Router();
 var objectId = require('mongodb').ObjectID;
 var passport = require('passport');
 var path = require('path');
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
 var router = function(io){
     io.on('connection', function(socket){
