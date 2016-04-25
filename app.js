@@ -2,12 +2,11 @@ var express = require('express');
 var app = require('express')();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
+var env = process.env.NODE_ENV = process.env.NODE_ENV || 'devlopment';
 
-var bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser');
-var passport = require('passport');
-var session = require('express-session');
-var router = express.Router();
+var config = require('/home/mh/ws/node/expressWithNodeOriginl/src/config/config.js')[env];
+
+require('/home/mh/ws/node/expressWithNodeOriginl/src/config/express.js')(app,io,config);
 
 var items = [
 {
@@ -90,44 +89,7 @@ var restaurants = [
     menu: ButcherMenu
 }
 ];
-var userRouter = require('./src/routes/userRouter.js')();
-var clientRouter = require('./src/routes/clientRouter.js')(io);
-var adminRouter = require('./src/routes/adminRouter.js');
 
-var port = process.env.PORT | 5000;
-
-app.use(express.static('public'));
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-app.use(bodyParser.json());
-app.use(cookieParser());
-app.use(session({secret: 'secret',  
-   saveUninitialized: true,
-   resave: true}));
-
-app.set('views','./src/views');
-
-app.set('view engine', 'ejs');
-
-// TODO
-// app.use(express.static(__dirname + '/public'));
-// app.get('/partials/:partialPath', function(req,res){
-//     res.render('/partials/'+ req.params.partialPath);
-// });
-
-require('./src/config/passport.js')(app);
-
-app.get('/aangular',function (req,res) {
-    res.render('userMain');
-    // body...
-});
-// app.use('/Admin',adminRouter);
-
-app.use('/Client',clientRouter);
-
-app.use('/',userRouter);
-
-server.listen(port,function(err){
-    console.log('running on server at port '+ port);
+server.listen(config.port,function(err){
+    console.log('running on server at port '+ config.port);
 })

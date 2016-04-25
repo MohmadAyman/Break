@@ -31,7 +31,7 @@
 			<![endif]-->
 		</head>
 		<!-- SET THE CONTROLLER AND GET ALL TODOS WITH INITIALIZE FUNCTION -->
-		<body ng-controller="mainController" ng-init="initialize()">
+		<body ng-controller="mainControll" ng-init="initialize()">
 			<!-- HEADER AND TODO COUNT -->
 
 			<form>
@@ -45,8 +45,8 @@
                         remove the "active" css class if needed -->
                         <div class="form-group">
                         	<div class="row">
-                        	 Search
-	              <input type="text" class="form-control input-md text-center" placeholder="Search for item" name="n" id="n" ng-click="searchMenu(n)"> 
+                        		Search
+                        		<input type="text" class="form-control input-md text-center" placeholder="Search for item" name="n" id="n" ng-click="searchMenu(n)"> 
                         		<ul>
                         			<li ng-repeat="service in services" class="form-control input-lg" ng-click="toggleActive(service)" ng-class="{active:service.active}">
                         				<!-- Notice the use of the currency filter, it will format the price -->
@@ -70,6 +70,5 @@
             <script>
             	var socket = io('http://localhost:5082');
             </script>
-
         </body>
         </html>

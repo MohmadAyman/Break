@@ -1,4 +1,5 @@
-angular.module('expressNode', ['ngResource', 'ngRoute']).controller('mainController',function($scope, $http, $rootScope,$routeProvider, $locationProvider) {
+angular.module('expressNode', [])
+    .controller('mainControll', function($scope,$http, $rootScope) {
   $scope.services = [];
   $scope.username = {};
   var toBeSent = [$scope.username, $scope.services];
@@ -84,4 +85,4 @@ angular.module('expressNode', ['ngResource', 'ngRoute']).controller('mainControl
     });
    });  
   }
-}); 
+})

@@ -1,6 +1,5 @@
-  var expressNode = angular.module('expressNode', []);
-
-  function mainController($scope, $http, $rootScope,$timeout) {
+angular.module('expressNode', [])
+    .controller('mainController', function($scope,$http, $rootScope,$timeout) {
     $scope.services = [];
     var recivedOrder = [];
     $scope.Orders = [];
@@ -65,4 +64,4 @@ $scope.userDone = function(s) {
   $scope.usersOrders.splice($scope.usersOrders.indexOf(s), s[1].length);
 }
 
-}
+})
