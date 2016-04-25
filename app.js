@@ -106,12 +106,22 @@ app.use(session({secret: 'secret',
    saveUninitialized: true,
    resave: true}));
 
-require('./src/config/passport.js')(app);
-
 app.set('views','./src/views');
 
 app.set('view engine', 'ejs');
 
+// TODO
+// app.use(express.static(__dirname + '/public'));
+// app.get('/partials/:partialPath', function(req,res){
+//     res.render('/partials/'+ req.params.partialPath);
+// });
+
+require('./src/config/passport.js')(app);
+
+app.get('/aangular',function (req,res) {
+    res.render('userMain');
+    // body...
+});
 // app.use('/Admin',adminRouter);
 
 app.use('/Client',clientRouter);

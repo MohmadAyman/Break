@@ -1,6 +1,4 @@
-var expressNode = angular.module('expressNode', []);
-
-function mainController($scope, $http, $rootScope) {
+angular.module('expressNode', ['ngResource', 'ngRoute']).controller('mainController',function($scope, $http, $rootScope,$routeProvider, $locationProvider) {
   $scope.services = [];
   $scope.username = {};
   var toBeSent = [$scope.username, $scope.services];
@@ -55,7 +53,7 @@ function mainController($scope, $http, $rootScope) {
 
       $http.post('/client/api/order', toBeSent)
       .success(function(data) {
-        console.log('no rerror')
+        console.log('no rerrr')
       })
       .error(function(data) {
         console.log('Error: ' + data);
@@ -86,4 +84,4 @@ function mainController($scope, $http, $rootScope) {
     });
    });  
   }
-}
+}); 

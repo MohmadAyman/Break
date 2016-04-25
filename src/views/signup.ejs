@@ -39,11 +39,19 @@
         <h4 align="center">Sign up!</h4>
         <div id="todo-form" class="row">
           <div class="col-sm-8 col-sm-offset-2 text-center">
-            <input type="tel" id="username" name="username" class="form-control input-md text-center" placeholder="Phone number">
+            <input type="tel" id="username" name="username" class="form-control input-md text-center" placeholder="User name">
             <br>  
             <input type="password" name="password" id="password" class="form-control input-md text-center" placeholder="Password">
             <br>
+            <input type="email" name="email" id="email" class="form-control input-md text-center" placeholder="Email">
+            <br>
+            <% if (msg.length > 0){ %>
+            <div class="alert alert-danger alert-error">
+            <%=msg%>
+            </div>
+            <% }%>
             <button type="submit" name="submit" class="btn  btn-block btn-sucess">Sign up</button>
+
 <!--                       <input type="email" id="email" class="form-control input-md text-center" placeholder="Email">
                       <br>
                       <input type="text" name="username" id="username" class="form-control input-md text-center" placeholder="User name">

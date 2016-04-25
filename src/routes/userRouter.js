@@ -5,8 +5,9 @@ var userRouter = express.Router();
 var objectId = require('mongodb').ObjectID;
 var passport = require('passport');
 var path = require('path');
-var userModel =  require('../../public/models/model_user.js');
-
+var userCtrl =  require('../../public/controllers/userController.js');
+var env = process.env.NODE_ENV = process.env.NODE_ENV || 'devlopment';
+var logger = require('morgan');
 var router = function(){
     var username = {};
     var orders = [{}];
@@ -60,27 +61,12 @@ var router = function(){
 
     userRouter.route('/Signup')
     .get(function (req,res) {
-        res.render('signup',{title: 'Sign Up !!!'});
+        res.render('signup',{title: 'Sign Up !!!', msg:''});
     });
 
     userRouter.route('/auth/signup')
     .post(function (req,res) {
-      console.log(req.body);
-      var url = 'mongodb://localhost:27017/orderApp';
-      mongodb.connect(url,function(err,db){
-        var collection = db.collection('userphone');
-        var user = {
-            username: req.body.username,
-            password: req.body.password,
-            orders: orders 
-        };
-        collection.insert(user,function (err, results) {
-            req.login(results,function () {
-                res.redirect('/');
-            })
-        })
-        console.log('auth signin');
-    })
+      userCtrl.create(req,res);
   });
 
     userRouter.route('/auth/signin')
