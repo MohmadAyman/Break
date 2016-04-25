@@ -17,6 +17,9 @@ module.exports = function(app,io,config){
 	app.use(session({secret: 'secret',  
 		saveUninitialized: true,
 		resave: true}));
+	app.use(passport.initialize());
+	app.use(passport.session());
+
 
 	app.set('views',config.rootPath+'/src/views');
 
@@ -28,7 +31,7 @@ module.exports = function(app,io,config){
 //     res.render('/partials/'+ req.params.partialPath);
 // });
 
-require(config.rootPath+'/src/config/passport.js')(app);
+// require(config.rootPath+'/src/config/passport.js')(app);
 
 var userRouter = require(config.rootPath+'/src/routes/userRouter.js')();
 var clientRouter = require(config.rootPath+'/src/routes/clientRouter.js')(io);

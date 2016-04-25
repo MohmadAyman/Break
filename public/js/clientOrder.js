@@ -1,5 +1,5 @@
 angular.module('expressNode', [])
-    .controller('mainController', function($scope,$http, $rootScope,$timeout) {
+    .controller('mainController', function($scope,$http, $rootScope,$timeout,mvNotify) {
     $scope.services = [];
     var recivedOrder = [];
     $scope.Orders = [];
@@ -18,6 +18,7 @@ function pad(n) { return n < 10 ? '0' + n : n };
   };
 
   socket.on('reciveOrder', function (data) {
+    mvNotify.notify('You have recived a new order!');
     menuToOrderes(data); 
     $scope.names.push(data[0]);
     console.log('recived  order');

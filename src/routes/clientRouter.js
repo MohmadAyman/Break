@@ -114,28 +114,10 @@ clientRouter.route('/orders')
 
 // TODO the time intervaal at the angular part calls the get for this url regurarly,
 // whic eventially overrides the client interface
-clientRouter.route('/ordersUpdate')
-.post(function (req,res) {
-    for (var i = 0; i < menu.length; i++) {
-        if (menu[i].active) {
-        }
-        menu[i]
-    }
-    var toBeSent = [ name, menu];
-    console.log(toBeSent);
-//    res.json(toBeSent);
-       io.emit('reciveOrder',toBeSent); 
-        // If i was to save the i orders in the db, should be done here
-        console.log('client sent to interface');
-    });        
-
-var sendToInterface = function () {
-    console.log('in sendToInterface');
-}
 
 clientRouter.route('/api/order/')
 .post(function (req,res) {
-    console.log('client recived ROUTER!!');
+    console.log('client recived ROUTER!!' + Date);
     name = req.body[0];
     menu = req.body[1];
     // res.redirect('/client/ordersUpdate');

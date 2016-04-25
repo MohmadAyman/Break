@@ -70,12 +70,16 @@ var router = function(){
   });
 
     userRouter.route('/auth/signin')
-    .post(passport.authenticate('local',{
-        failureRedirect: '/'
-    }), function (req,res) {
-        console.log("in sign in ");
-        username = req.body;
-        res.redirect('/menu');
+    .post(function(req,res,next){
+        var auth = passport.authenticate('local', function (err,user) {
+            if(err){return next(err);}
+            if(!user){res.send({sucess:false});}
+            req.logIn(user, function(err){
+                username = req.body.username;
+                res.redirect('/menu');
+            })
+        })
+        auth(req,res,next);
     });
 
     userRouter.route('/menu')

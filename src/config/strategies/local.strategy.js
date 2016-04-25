@@ -1,38 +1,48 @@
-var passport = require('passport');
-LocalStrategy = require('passport-local').Strategy,
-mongodb = require('mongodb').MongoClient;
+// var passport = require('passport');
+// LocalStrategy = require('passport-local').Strategy,
+// userModel =  require('../models/model_user.js');
 
-// TODO if a user doesn't exist output an error msg and dont procced -dontt chch for the password-.
-module.exports = function () {
+// // TODO if a user doesn't exist output an error msg and dont procced -dontt chch for the password-.
+// module.exports = function () {
 
-	console.log('in LocalStrategy');
+// 	passport.use(new LocalStrategy(
+// 	function(username,password,done){
 
-	passport.use(new LocalStrategy({
-		username: 'username',
-		password: 'password'
-	},
-	function(username,password,done){
-		var url = 'mongodb://localhost:27017/orderApp';
-		mongodb.connect(url,function(err,db){
-			var collection = db.collection('userphone');
-			console.log('matched number is : ');
-			var x = parseInt(collection.find({username: username}).count());
-			console.log(x);
-			if (x===8){
-				console.log('Right !!');
-				done(null, false);
-			}
-			collection.findOne({username: username},function(err,results,mess){
-				console.log(results);
-				if (err) { done(err); }
-				if (results === 'null') { done(null, false); }
-				if(!results.username) { done(null, false); }
-				if (!results.username === username) { done(null, false); }				
-				if (!results.password === password) { done(null, false); }
-				done(null, results);
-			}
-			);
-		})
-	})
-	)		
-};
+// 		userModel.findOne({username:username}).exec(function(err, user){
+// 			if(user){
+// 				done(null,user);
+// 			}
+// 			else{
+// 				done(null,false);
+// 			}
+// 		})
+// 	})
+// 	app.use(passport.initialize());
+// 	app.use(passport.session());
+// 	passport.serializeUser(function(user,done) {
+// 		done(null, user);		// body...
+// 	});
+// 	passport.deserializeUser(function(user,done) {
+// 		done(null, user);		// body...
+// 	});
+// 	require('./strategies/local.strategy.js')();
+
+
+// 	)};
+// 		if (x===8){
+// 			console.log('Right !!');
+// 			done(null, false);
+// 		}
+// 		collection.findOne({username: username},function(err,results,mess){
+// 			console.log(results);
+// 			if (err) { done(err); }
+// 			if (results === 'null') { done(null, false); }
+// 			if(!results.username) { done(null, false); }
+// 			if (!results.username === username) { done(null, false); }				
+// 			if (!results.password === password) { done(null, false); }
+// 			done(null, results);
+// 		}
+// 		);
+// 	})
+// })
+// };

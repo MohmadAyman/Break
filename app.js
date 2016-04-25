@@ -3,6 +3,9 @@ var app = require('express')();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 var env = process.env.NODE_ENV = process.env.NODE_ENV || 'devlopment';
+var passport = require('passport'),
+LocalStrategy = require('passport-local').Strategy,
+userModel =  require('/home/mh/ws/node/expressWithNodeOriginl/public/models/model_user.js');
 
 var config = require('/home/mh/ws/node/expressWithNodeOriginl/src/config/config.js')[env];
 
@@ -89,6 +92,35 @@ var restaurants = [
     menu: ButcherMenu
 }
 ];
+
+passport.use(new LocalStrategy(
+    function(username,password,done){
+        userModel.findOne({name:username}).exec(function(err, user){
+            if(user){
+                done(null,user);
+            }
+            else{
+                done(null,false);
+            }
+        })
+    }));
+
+passport.serializeUser(function(user,done) {
+   if(user){
+    done(null, user._id);  
+        }     // body...
+    });
+
+passport.deserializeUser(function(id,done) {
+    userModel.findOne({_id:id}).exec(function(err, user){
+        if(user)
+            return done(null,user);
+        else{
+            return done(null,false);
+        }
+        done(null, user);       // body...
+    })
+});
 
 server.listen(config.port,function(err){
     console.log('running on server at port '+ config.port);

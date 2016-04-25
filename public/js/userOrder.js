@@ -1,5 +1,5 @@
 angular.module('expressNode', [])
-    .controller('mainControll', function($scope,$http, $rootScope) {
+.controller('mainControll', function($scope,$http, $rootScope) {
   $scope.services = [];
   $scope.username = {};
   var toBeSent = [$scope.username, $scope.services];
@@ -14,12 +14,12 @@ angular.module('expressNode', [])
     });
     $http.get('/api/username')
     .success(function(name) {
+      console.log(name);
+      $scope.username = name;
       toBeSent = [$scope.username, $scope.services];
-      $scope.username = name.username;
-      console.log(name.username);
     })
     .error(function(data) {
-      console.log('Error: ' + name.username);
+      console.log('Error: ' + name);
     });
   };
 
@@ -43,18 +43,11 @@ angular.module('expressNode', [])
 
     $scope.placeOrder = function() {
       toBeSent = [$scope.username, $scope.services];
-      var orderList = [{
-        name: ''
-      }];
-      angular.forEach($scope.services, function(s){
-        if (s.active){
-          orderList[0].name += s.name;
-        }
-      })
-
       $http.post('/client/api/order', toBeSent)
       .success(function(data) {
-        console.log('no rerrr')
+        console.log(data);
+        // Why is nth being logged??
+        console.log('user posted on apu/order');
       })
       .error(function(data) {
         console.log('Error: ' + data);
@@ -75,7 +68,7 @@ angular.module('expressNode', [])
 
   // TODO add search functionality
   $scope.searchMenu = function (string) {
-  console.log('recived name ' + string);
+    console.log('recived name ' + string);
     angular.forEach($scope.services, function(s){
      angular.forEach(s, function(item){
       if (item.name == string){

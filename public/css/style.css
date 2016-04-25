@@ -96,6 +96,15 @@ div.total{
 	color:#000;
 }
 
+.toast-top-right{
+	top :70px;
+}
+
+.toast-success{
+	background-color: #8ec16d;
+}
+
+
 div.total span{
 	float:right;
 }
