@@ -1,0 +1,30 @@
+<div>
+	<form>
+
+		<div >
+			<h1 align="center">BREAK</h1>
+			<h5>Hello  {{username}} :) </h5>
+
+
+                        <!-- Loop through the services array, assign a click handler, and set or
+                        remove the "active" css class if needed -->
+                        <div class="form-group">
+                        	<div class="row">
+                        		Search
+                        		<input type="text" class="form-control input-md text-center" placeholder="Search for item" name="n" id="n" ng-click="searchMenu(n)"> 
+                        		<ul>
+                        			<li ng-repeat="service in services" class="form-control input-lg" ng-click="toggleActive(service)" ng-class="{active:service.active}">
+                        				<!-- Notice the use of the currency filter, it will format the price -->
+                        				{{service.name}} <span>{{service.price}} LE</span>
+                        			</li>
+                        			<br>
+                        		</ul>
+                        		<div class="total">
+                        			Total: <span>{{total()}} LE</span>
+                        		</div>
+                        	</div>
+
+                        	<button type="submit" class="btn btn-primary btn-lg" ng-class="{active:service.active}" ng-click="placeOrder()">Order!</button>
+                        </div>
+                    </form>         
+                </div>

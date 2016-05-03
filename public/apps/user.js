@@ -1,5 +1,5 @@
-angular.module('expressNode', [])
-.controller('mainControll', function($scope,$http, $rootScope) {
+angular.module('user', [])
+.controller('initial', function($scope,$http, $rootScope) {
   $scope.services = [];
   $scope.username = {};
   var toBeSent = [$scope.username, $scope.services];
@@ -8,7 +8,6 @@ angular.module('expressNode', [])
     $http.get('/api/menu')
     .success(function(data) {
       $scope.services = data;
-      console.log(data[0].name);
     })
     .error(function(data) {
       console.log('Error: ' + data);

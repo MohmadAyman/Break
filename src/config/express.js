@@ -4,6 +4,7 @@ var cookieParser = require('cookie-parser');
 var passport = require('passport');
 var router = express.Router();
 var session = require('express-session');
+var jwt         = require('jwt-simple');
 
 module.exports = function(app,io,config){
 

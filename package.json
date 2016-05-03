@@ -3,8 +3,8 @@
   "author": "MohmmadAyman",
   "description": "Sails/Angular TODO Applcation",
   "scripts": {
-  "start": "node app.js"
-},
+    "start": "node app.js"
+  },
   "main": "app.js",
   "engines": {
     "node": "5.10.1"
@@ -13,6 +13,7 @@
     "cookie-parser": "^1.4.1",
     "express": "^4.10.2",
     "express-session": "^1.13.0",
+    "jwt-simple": "^0.5.0",
     "mongoose": "^4.4.12",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0"

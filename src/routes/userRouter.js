@@ -12,47 +12,25 @@ var router = function(){
     var username = {};
     var orders = [{}];
 
-    var pizza = [{
-        name: 'Margretta',
-        price: 12,
-        active: false
+ var Facets = {};
+  var sandwitches = [{
+    name: 'Batates',
+    price: '5'
+  },
+  {
+    name: 'Batates',
+    price: '5'
+  },{
+    name: 'Batates',
+    price: '5'
+  },{
+    name: 'Shawrma',
+    price: '5'
+  }];
+  Facets.menu = [{name: 'sandwitches' ,menu: sandwitches},{name: 'Pizza' ,menu: sandwitches},
+  {name: 'Sori' ,menu: sandwitches},{name: 'Drinks' ,menu: sandwitches},{name: 'Drinks' ,menu: sandwitches}];
 
-    },
-    {
-        name: 'Cheese',
-        price: 16,
-        active: false
-    }];
-
-    var sandwitches = [{
-        name: 'Batates',
-        price: 10,
-        active: false
-
-    },
-    {
-        name: 'Shwrma',
-        price: 7,        
-        active: false
-
-    }];
-    
-    var sori = [{
-        name: 'Kofta',
-        price: 10,
-        active: false
-
-    },
-    {
-        name: 'Tates',
-        price: 6,
-        active: false
-
-    }];
-
-    // var menu =[pizza,sandwitches,sori];
-
-    var menu = pizza;
+    var menu = Facets.menu;
 
     userRouter.route('/')
     .get(function (req,res) {

@@ -1,28 +1,24 @@
 <!DOCTYPE html>
 <!-- ASSIGN OUR ANGULAR MODULE -->
-<html ng-app="expressNode">
+<html ng-app="client">
 
 <head>
 	<meta charset="utf-8"/>
 	<title>No titile</title>
 
-	<link href="http://fonts.googleapis.com/css?family=Cookie|Open+Sans:1000,1000" rel="stylesheet" />
-
-	<script src="/lib/angular/angular.min.js"></script>
-	<script src="/js/userOrder.js"></script>
-
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular.js"></script>
+	<script src="/js/client.js"></script>
 	<!-- bower:js -->
 	<script src="/lib/jquery/dist/jquery.js"></script>
 	<script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
 	<!-- endbower -->
 	<!-- bower:css -->
 	<link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
-	<!-- endbower -->
-	<!-- inject:js -->
-	<!-- endinject -->  
+	<!-- endbower --> 
 	<!-- inject:css -->
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/styles.css">
+	<!-- endinject -->  
 	<!-- endinject -->  
 	<!-- The main CSS file -->
 
@@ -47,16 +43,13 @@
                         	<div class="row">
                         		Search
                         		<input type="text" class="form-control input-md text-center" placeholder="Search for item" name="n" id="n" ng-click="searchMenu(n)"> 
-                        		<div ng-repeat="s in services">
-                        		{{s.name}}
                         		<ul>
-                        			<li ng-repeat="service in s.menu" class="form-control input-lg" ng-click="toggleActive(service)" ng-class="{active:service.active}">
+                        			<li ng-repeat="service in services" class="form-control input-lg" ng-click="toggleActive(service)" ng-class="{active:service.active}">
                         				<!-- Notice the use of the currency filter, it will format the price -->
                         				{{service.name}} <span>{{service.price}} LE</span>
                         			</li>
                         			<br>
                         		</ul>
-                        		</div>
                         		<div class="total">
                         			Total: <span>{{total()}} LE</span>
                         		</div>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="user">
+
+<head>
+	<meta charset="utf-8"/>
+	<title>No titile</title>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular.js"></script>
+	<script src="/js/user.js"></script>
+	<!-- bower:js -->
+	<script src="/lib/jquery/dist/jquery.js"></script>
+	<script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+	<!-- endbower -->
+	<!-- bower:css -->
+	<link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+	<!-- endbower --> 
+	<!-- inject:css -->
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/styles.css">
+	<!-- endinject -->  
+	<!-- The main CSS file -->
+
+		<!--[if lt IE 9]>
+			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+			<![endif]-->
+		</head>
+		<!-- SET THE CONTROLLER AND GET ALL TODOS WITH INITIALIZE FUNCTION -->
+		<body ng-controller="initial" ng-init="initialize()">
+
+
+
+<!--                 <script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
+-->
+<script src="/socket.io/socket.io.js"></script>
+
+<script>
+	var socket = io('http://localhost:5082');
+</script>
+</body>
+</html>

@@ -12,6 +12,14 @@ var router = function(io){
     io.on('connection', function(socket){
       socket.on('event', function(data){});
       socket.on('disconnect', function(){});
+      socket.on('orderFromIonic', function (data) {
+        console.log('recived  order from ionic' + data[0].name);
+        console.log(data)
+        var toBeSent = {name: 'From client router after reciving from ionic user'};
+        console.log(toBeSent);
+//    res.json(toBeSent);
+        io.emit('reciveOrder',data); 
+});
   });
 
     var pizza = [{
@@ -129,7 +137,7 @@ clientRouter.route('/api/order/')
     var toBeSent = [ name, menu];
     console.log(toBeSent);
 //    res.json(toBeSent);
-       io.emit('reciveOrder',toBeSent); 
+io.emit('reciveOrder',toBeSent); 
 });
 
 return clientRouter;
